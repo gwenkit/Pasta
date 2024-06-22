@@ -38,13 +38,13 @@ const styles = {
   },
 };
 
-type ButtonProps = {
+type CounterButtonProps = {
   label: string;
   num: number;
   numHide: boolean;
 };
 
-const SampleButtonGroup = () => {
+const CounterButtonGroup = () => {
   const [msg, setMsg] = useState('ready!');
   const resetCount = () => {
     setMsg('Reset function is not ready yet. 개발 중...');
@@ -59,32 +59,32 @@ const SampleButtonGroup = () => {
         backgroundColor: 'purple',
       }}>test(Button)</Text>
       <View style={styles.buttonTest}>
-        <SampleButton label="Button" num="1" />
+        <CounterButton label="Button" num="1" />
       </View>
       <View style={styles.buttonTest}>
-        <SampleButton label="Button" num="2" />
-        <SampleButton label="Button" num="3" />
+        <CounterButton label="Button" num="2" />
+        <CounterButton label="Button" num="3" />
       </View>
       <View style={styles.buttonTest}>
-        <SampleButton label="Button" num="4" />
-        <SampleButton label="Button" num="5" />
-        <SampleButton label="Button" num="6" />
+        <CounterButton label="Button" num="4" />
+        <CounterButton label="Button" num="5" />
+        <CounterButton label="Button" num="6" />
       </View>
       <View style={styles.buttonTest}>
-        <SampleButton label="Button" num="7" />
-        <SampleButton label="Button" num="8" />
-        <SampleButton label="Button" num="9" />
-        <SampleButton label="Button" num="0" />
+        <CounterButton label="Button" num="7" />
+        <CounterButton label="Button" num="8" />
+        <CounterButton label="Button" num="9" />
+        <CounterButton label="Button" num="0" />
       </View>
       <View style={styles.buttonTest}>
-        <SampleButton label="A" num="A" numHide />
-        <SampleButton label="B" num="B" numHide />
-        <SampleButton label="C" num="C" numHide />
-        <SampleButton label="D" num="D" numHide />
-        <SampleButton label="E" num="E" numHide />
-        <SampleButton label="F" num="F" numHide />
-        <SampleButton label="G" num="G" numHide />
-        <SampleButton label="H" num="H" numHide />
+        <CounterButton label="A" num="A" numHide />
+        <CounterButton label="B" num="B" numHide />
+        <CounterButton label="C" num="C" numHide />
+        <CounterButton label="D" num="D" numHide />
+        <CounterButton label="E" num="E" numHide />
+        <CounterButton label="F" num="F" numHide />
+        <CounterButton label="G" num="G" numHide />
+        <CounterButton label="H" num="H" numHide />
       </View>
       <View style={styles.buttonTest}>
         <View style={{
@@ -106,7 +106,7 @@ const SampleButtonGroup = () => {
   );
 };
 
-const SampleButton = (props: ButtonProps) => {
+const CounterButton = (props: CounterButtonProps) => {
   const [pressCount, setPressCount] = useState(0);
 
   return (
@@ -156,7 +156,7 @@ const Pasta = () => {
         <Image source={sampleImage} />
       </View>
       <ScrollView styles={styles.scrollTest}>
-        <SampleButtonGroup />
+        <CounterButtonGroup />
       </ScrollView>
       <View style={styles.stringTest}>
         <Text style={{
