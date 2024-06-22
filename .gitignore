@@ -1,6 +1,8 @@
 # OSX
+# macOS
 #
 .DS_Store
+.localized
 
 # Xcode
 #
