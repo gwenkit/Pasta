@@ -149,7 +149,7 @@ const CounterButton = (props: CounterButtonProps) => {
   );
 };
 
-const Pasta = () => {
+const HelloWorld = () => {
   return (
     <View style={styles.container}>
       <View style={styles.gutterTest}>
@@ -170,5 +170,5 @@ const Pasta = () => {
   );
 };
 
-export default Pasta;
+export default HelloWorld;
 
