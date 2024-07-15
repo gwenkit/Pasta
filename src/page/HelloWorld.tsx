@@ -9,7 +9,7 @@ const sampleImage = {
 
 const styles = {
   container: {
-    flex: 1,
+    //flex: 1,
     //paddingTop: 22,
     //paddingBottom: 22,
     backgroundColor: 'honeydew',
@@ -36,6 +36,12 @@ const styles = {
     flexDirection: 'row',
     backgroundColor: 'white',
   },
+  sectionTitle: {
+    padding: 1,
+    fontSize: 14,
+    color: 'snow',
+    backgroundColor: 'purple',
+  },
 };
 
 type CounterButtonProps = {
@@ -52,12 +58,7 @@ const CounterButtonGroup = () => {
 
   return (
     <>
-      <Text style={{
-        padding: 1,
-        fontSize: 14,
-        color: 'snow',
-        backgroundColor: 'purple',
-      }}>test(Button)</Text>
+      <Text style={styles.sectionTitle}>test(Button)</Text>
       <View style={styles.buttonTest}>
         <CounterButton label="Button" num="1" />
       </View>
@@ -95,11 +96,7 @@ const CounterButtonGroup = () => {
             onPress={resetCount}
             title="Reset"
           />
-          <Text style={{
-            padding: 2,
-            color: 'white',
-            backgroundColor: 'maroon',
-          }}>{msg}</Text>
+          <Text style={{padding: 2, color: 'white', backgroundColor: 'maroon'}}>{msg}</Text>
         </View>
       </View>
     </>
@@ -114,16 +111,6 @@ const CounterButton = (props: CounterButtonProps) => {
       flex: 1,
       flexDirection: 'column',
     }}>
-      <Button
-        onPress={() => {
-          setPressCount(pressCount+1);
-        }}
-        title={(props.num && !props.numHide) ? (
-          props.label + " #" + props.num
-        ) : (
-          props.label
-        )}
-      />
       <View style={{
         flex: 1,
         flexDirection: 'row',
@@ -145,30 +132,67 @@ const CounterButton = (props: CounterButtonProps) => {
           backgroundColor: 'lavender',
         }}>{pressCount}</Text>
       </View>
+      <Button
+        onPress={() => {
+          setPressCount(pressCount+1);
+        }}
+        title={(props.num && !props.numHide) ? (
+          props.label + " #" + props.num
+        ) : (
+          props.label
+        )}
+      />
     </View>
   );
 };
 
-const HelloWorld = () => {
+const HelloWorldPage = () => {
   return (
     <View style={styles.container}>
       <View style={styles.gutterTest}>
+        <Text style={styles.sectionTitle}>test(gutter)</Text>
         <Image source={sampleImage} />
       </View>
-      <ScrollView styles={styles.scrollTest}>
-        <CounterButtonGroup />
-      </ScrollView>
+      <View style={styles.scrollTest}>
+        <Text style={styles.sectionTitle}>test(scroll)</Text>
+        <ScrollView>
+          <CounterButtonGroup />
+        </ScrollView>
+      </View>
       <View style={styles.stringTest}>
+        <Text style={styles.sectionTitle}>test(string)</Text>
+        <Text style={{
+          color: 'darkolivegreen',
+        }}>Hello, world!</Text>
+        <Text style={{
+          color: 'darkolivegreen',
+        }}>Hello, world!</Text>
+        <Text style={{
+          color: 'darkolivegreen',
+        }}>Hello, world!</Text>
+        <Text style={{
+          color: 'darkolivegreen',
+        }}>Hello, world!</Text>
+        <Text style={{
+          color: 'darkolivegreen',
+        }}>Hello, world!</Text>
+        <Text style={{
+          color: 'darkolivegreen',
+        }}>Hello, world!</Text>
+        <Text style={{
+          color: 'darkolivegreen',
+        }}>Hello, world!</Text>
         <Text style={{
           color: 'darkolivegreen',
         }}>Hello, world!</Text>
       </View>
       <View style={styles.bottomTest}>
+        <Text style={styles.sectionTitle}>test(bottom)</Text>
         <Image source={sampleImage} />
       </View>
     </View>
   );
 };
 
-export default HelloWorld;
+export default HelloWorldPage;
 

@@ -1,76 +1,97 @@
-import React, {useState} from 'react';
-import {Button, TextInput, Text, ScrollView, View} from 'react-native';
-import HelloWorld from './HelloWorld';
+import React from 'react';
+import {Button, View} from 'react-native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator, NativeStackScreenProps} from '@react-navigation/native-stack';
+import HomePage from './page/Home';
+import HelloWorldPage from './page/HelloWorld';
+import CatCafePage from './page/CatCafe';
+import ProfilePage from './page/Profile';
 
-type CatProps = {
-  name: string;
+const styles = {
+  container: {
+    flex: 1,
+    //paddingTop: 22,
+    //paddingBottom: 22,
+    backgroundColor: 'honeydew',
+  },
+  sectionTitle: {
+    padding: 1,
+    fontSize: 14,
+    color: 'snow',
+    backgroundColor: 'purple',
+  },
 };
 
-const getFullName = (
-  firstName: string,
-  secondName: string,
-  thirdName: string,
-) => {
-  return firstName + ' ' + secondName + ' ' + thirdName;
+type StackScreenParamList = {
+  Home: undefined;
+  HelloWorld: undefined;
+  CatCafe: undefined;
+  Profile: { name: string };
 };
 
-const Pizza = () => {
-  const [text, setText] = useState('');
+const ScreenStack = createNativeStackNavigator<StackScreenParamList>();
+
+type HomeScreenProps = NativeStackScreenProps<StackScreenParamList, "Home">;
+const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   return (
-    <>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-        }}
-        onChangeText={newText => setText(newText)}
-        defaultValue="Hello, world!"
-      />
-      <Text style={{padding: 10, fontSize: 42}}>
-        {text
-          .split(' ')
-          .map(word => word && '🍕')
-          .join(' ')}
-      </Text>
-    </>
-  );
-};
-
-const Cat = (props: CatProps) => {
-  const [isHungry, setIsHungry] = useState(true);
-  return (
-    <View>
-      <Text>Hello, {getFullName('Rum', 'Tum', 'Tugger')}!</Text>
-      <Text>I am {props.name}!</Text>
-      <Text>
-        I am {props.name}, and I am {isHungry ? 'hungry' : 'full'}!
-      </Text>
+    <View style={styles.container}>
+      <HomePage />
       <Button
-        onPress={() => {
-          setIsHungry(false);
-        }}
-        disabled={!isHungry}
-        title={isHungry ? 'Give me some food, please!' : 'Thank you!'}
+        title="nav: 'Hello World' page"
+        onPress={() => props.navigation.navigate('HelloWorld')}
       />
-      <Pizza />
+      <Button
+        title="nav: 'Cat Cafe' page"
+        onPress={() => props.navigation.navigate('CatCafe')}
+      />
+      <Button
+        title="nav: Gwen's profile page"
+        onPress={() => props.navigation.navigate('Profile', { name: 'Gwen' })}
+      />
     </View>
   );
 };
 
-const Cafe = () => {
-  return (
-    <ScrollView style={{flex:1}}>
-      <Text>Welcome!</Text>
-      <Cat name="Maru" />
-      <Cat name="Jellylorum" />
-      <Cat name="Spot" />
-      <Cat name="Munkustrap" />
-      <Cat name="Spot" />
-      <HelloWorld />
-    </ScrollView>
-  );
+const HelloWorldScreen = () => {
+  return <HelloWorldPage />
 };
 
-export default Cafe;
+const CatCafeScreen = () => {
+  return <CatCafePage />
+};
+
+type ProfileScreenProps = NativeStackScreenProps<StackScreenParamList, "Profile">;
+const ProfileScreen: React.FC<ProfileScreenProps> = (props) => {
+  return <ProfilePage name={props.route.params.name} />;
+};
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <ScreenStack.Navigator>
+        <ScreenStack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{title: 'Welcome'}}
+        />
+        <ScreenStack.Screen
+          name="HelloWorld"
+          component={HelloWorldScreen}
+          options={{title: 'Hello World'}}
+        />
+        <ScreenStack.Screen
+          name="CatCafe"
+          component={CatCafeScreen}
+          options={{title: 'Cat Cafe'}}
+        />
+        <ScreenStack.Screen
+          name="Profile"
+          component={ProfileScreen}
+        />
+      </ScreenStack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
 
