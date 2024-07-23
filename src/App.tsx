@@ -1,10 +1,10 @@
 import React from 'react';
-import {Button, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator, NativeStackScreenProps} from '@react-navigation/native-stack';
 import HomePage from './page/Home';
-import HelloWorldPage from './page/HelloWorld';
-import CatCafePage from './page/CatCafe';
+import HelloWorldPage from './page/t/HelloWorld';
+import CatCafePage from './page/t/CatCafe';
 import ProfilePage from './page/Profile';
 
 const styles = {
@@ -35,17 +35,20 @@ type HomeScreenProps = NativeStackScreenProps<StackScreenParamList, "Home">;
 const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   return (
     <View style={styles.container}>
+      <Text style={styles.sectionTitle}>section: Home</Text>
       <HomePage />
+      <Text style={styles.sectionTitle}>section: test</Text>
       <Button
-        title="nav: 'Hello World' page"
+        title="'Hello World' page"
         onPress={() => props.navigation.navigate('HelloWorld')}
       />
       <Button
-        title="nav: 'Cat Cafe' page"
+        title="'Cat Cafe' page"
         onPress={() => props.navigation.navigate('CatCafe')}
       />
+      <Text style={styles.sectionTitle}>section: Profile</Text>
       <Button
-        title="nav: Gwen's profile page"
+        title="Gwen's profile page"
         onPress={() => props.navigation.navigate('Profile', { name: 'Gwen' })}
       />
     </View>
