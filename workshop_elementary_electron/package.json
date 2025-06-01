@@ -1,0 +1,21 @@
+{
+  "name": "workshop_elementary_electron",
+  "version": "0.0.1",
+  "description": "Hello, world!",
+  "keywords": [
+    "workshop",
+    "elementary",
+    "electron"
+  ],
+  "license": "MIT",
+  "author": "gwenkit.com",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cat-picture": "^5.1.2",
+    "lightning-image-poly": "^0.0.10"
+  }
+}
